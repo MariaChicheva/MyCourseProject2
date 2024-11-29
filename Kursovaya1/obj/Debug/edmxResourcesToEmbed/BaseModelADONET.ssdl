@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище DBKursovayaModel" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="AccountID" />
+    </Key>
+    <Property Name="AccountID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Login_" Type="nvarchar" MaxLength="45" />
+    <Property Name="Password_" Type="nvarchar" MaxLength="100" />
+    <Property Name="RoleID" Type="int" />
+  </EntityType>
+  <EntityType Name="Clients">
+    <Key>
+      <PropertyRef Name="ClientID" />
+    </Key>
+    <Property Name="ClientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClientName" Type="varchar" MaxLength="255" />
+    <Property Name="ClientPhone" Type="varchar" MaxLength="11" />
+    <Property Name="ClientAdress" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="ItemID" />
+    </Key>
+    <Property Name="ItemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ItemName" Type="varchar" MaxLength="255" />
+    <Property Name="ItemWeight" Type="int" />
+    <Property Name="ItemSize" Type="int" />
+    <Property Name="ItemType" Type="int" />
+    <Property Name="ItemMaterial" Type="int" />
+  </EntityType>
+  <EntityType Name="Jeweler">
+    <Key>
+      <PropertyRef Name="JewelerID" />
+    </Key>
+    <Property Name="JewelerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JewelerName" Type="varchar" MaxLength="255" />
+    <Property Name="JewelerPhone" Type="varchar" MaxLength="11" />
+    <Property Name="ItemID" Type="int" />
+  </EntityType>
+  <EntityType Name="Material">
+    <Key>
+      <PropertyRef Name="MaterialID" />
+    </Key>
+    <Property Name="MaterialID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaterialName" Type="nvarchar" MaxLength="45" />
+    <Property Name="PrisePerGramm" Type="int" />
+  </EntityType>
+  <EntityType Name="Order_">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderNumber" Type="int" />
+    <Property Name="DateAndTime_" Type="date" />
+    <Property Name="ClientID" Type="int" />
+    <Property Name="JewelerID" Type="int" />
+    <Property Name="Item" Type="varchar" MaxLength="225" />
+    <Property Name="StatusID" Type="int" />
+  </EntityType>
+  <EntityType Name="Role_">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameRole" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="StatusID" />
+    </Key>
+    <Property Name="StatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StatusName" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="Types_">
+    <Key>
+      <PropertyRef Name="TypeID" />
+    </Key>
+    <Property Name="TypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TypeName" Type="nvarchar" MaxLength="45" />
+  </EntityType>
+  <Association Name="FK__Account__RoleID__4BAC3F29">
+    <End Role="Role_" Type="Self.Role_" Multiplicity="0..1" />
+    <End Role="Account" Type="Self.Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role_">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Item__ItemMateri__571DF1D5">
+    <End Role="Material" Type="Self.Material" Multiplicity="0..1" />
+    <End Role="Item" Type="Self.Item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Material">
+        <PropertyRef Name="MaterialID" />
+      </Principal>
+      <Dependent Role="Item">
+        <PropertyRef Name="ItemMaterial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Item__ItemType__5629CD9C">
+    <End Role="Types_" Type="Self.Types_" Multiplicity="0..1" />
+    <End Role="Item" Type="Self.Item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Types_">
+        <PropertyRef Name="TypeID" />
+      </Principal>
+      <Dependent Role="Item">
+        <PropertyRef Name="ItemType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Jeweler__ItemID__59FA5E80">
+    <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+    <End Role="Jeweler" Type="Self.Jeweler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ItemID" />
+      </Principal>
+      <Dependent Role="Jeweler">
+        <PropertyRef Name="ItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Order___ClientID__5CD6CB2B">
+    <End Role="Clients" Type="Self.Clients" Multiplicity="0..1" />
+    <End Role="Order_" Type="Self.Order_" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clients">
+        <PropertyRef Name="ClientID" />
+      </Principal>
+      <Dependent Role="Order_">
+        <PropertyRef Name="ClientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Order___JewelerI__5DCAEF64">
+    <End Role="Jeweler" Type="Self.Jeweler" Multiplicity="0..1" />
+    <End Role="Order_" Type="Self.Order_" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Jeweler">
+        <PropertyRef Name="JewelerID" />
+      </Principal>
+      <Dependent Role="Order_">
+        <PropertyRef Name="JewelerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Order___StatusID__5EBF139D">
+    <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+    <End Role="Order_" Type="Self.Order_" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="StatusID" />
+      </Principal>
+      <Dependent Role="Order_">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище DBKursovayaModelContainer">
+    <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Jeweler" EntityType="Self.Jeweler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Material" EntityType="Self.Material" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Order_" EntityType="Self.Order_" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role_" EntityType="Self.Role_" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Types_" EntityType="Self.Types_" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Account__RoleID__4BAC3F29" Association="Self.FK__Account__RoleID__4BAC3F29">
+      <End Role="Role_" EntitySet="Role_" />
+      <End Role="Account" EntitySet="Account" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Item__ItemMateri__571DF1D5" Association="Self.FK__Item__ItemMateri__571DF1D5">
+      <End Role="Material" EntitySet="Material" />
+      <End Role="Item" EntitySet="Item" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Item__ItemType__5629CD9C" Association="Self.FK__Item__ItemType__5629CD9C">
+      <End Role="Types_" EntitySet="Types_" />
+      <End Role="Item" EntitySet="Item" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Jeweler__ItemID__59FA5E80" Association="Self.FK__Jeweler__ItemID__59FA5E80">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="Jeweler" EntitySet="Jeweler" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Order___ClientID__5CD6CB2B" Association="Self.FK__Order___ClientID__5CD6CB2B">
+      <End Role="Clients" EntitySet="Clients" />
+      <End Role="Order_" EntitySet="Order_" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Order___JewelerI__5DCAEF64" Association="Self.FK__Order___JewelerI__5DCAEF64">
+      <End Role="Jeweler" EntitySet="Jeweler" />
+      <End Role="Order_" EntitySet="Order_" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Order___StatusID__5EBF139D" Association="Self.FK__Order___StatusID__5EBF139D">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="Order_" EntitySet="Order_" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

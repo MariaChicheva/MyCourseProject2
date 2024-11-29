@@ -1,0 +1,103 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\table_table_table\\studies\\KRE\\4 \u043A\u0443\u0440\u0441\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u044F\\kursovaya\\Kursovaya1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8FC184DC-A1F5-4DBB-817F-B4F775C041AA}|Kursovaya1\\Kursovaya1.csproj|D:\\table_table_table\\studies\\KRE\\4 \u043A\u0443\u0440\u0441\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u044F\\kursovaya\\Kursovaya1\\kursovaya1\\refreshwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8FC184DC-A1F5-4DBB-817F-B4F775C041AA}|Kursovaya1\\Kursovaya1.csproj|solutionrelative:kursovaya1\\refreshwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FC184DC-A1F5-4DBB-817F-B4F775C041AA}|Kursovaya1\\Kursovaya1.csproj|d:\\table_table_table\\studies\\kre\\4 \u043A\u0443\u0440\u0441\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F\\kursovaya\\kursovaya1\\kursovaya1\\addeditwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8FC184DC-A1F5-4DBB-817F-B4F775C041AA}|Kursovaya1\\Kursovaya1.csproj|solutionrelative:kursovaya1\\addeditwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FC184DC-A1F5-4DBB-817F-B4F775C041AA}|Kursovaya1\\Kursovaya1.csproj|d:\\table_table_table\\studies\\kre\\4 \u043A\u0443\u0440\u0441\\\u043A\u0443\u0440\u0441\u043E\u0432\u0430\u044F\\kursovaya\\kursovaya1\\kursovaya1\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8FC184DC-A1F5-4DBB-817F-B4F775C041AA}|Kursovaya1\\Kursovaya1.csproj|solutionrelative:kursovaya1\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FC184DC-A1F5-4DBB-817F-B4F775C041AA}|Kursovaya1\\Kursovaya1.csproj|D:\\table_table_table\\studies\\KRE\\4 \u043A\u0443\u0440\u0441\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u044F\\kursovaya\\Kursovaya1\\kursovaya1\\global.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8FC184DC-A1F5-4DBB-817F-B4F775C041AA}|Kursovaya1\\Kursovaya1.csproj|solutionrelative:kursovaya1\\global.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FC184DC-A1F5-4DBB-817F-B4F775C041AA}|Kursovaya1\\Kursovaya1.csproj|D:\\table_table_table\\studies\\KRE\\4 \u043A\u0443\u0440\u0441\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u044F\\kursovaya\\Kursovaya1\\kursovaya1\\global.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8FC184DC-A1F5-4DBB-817F-B4F775C041AA}|Kursovaya1\\Kursovaya1.csproj|solutionrelative:kursovaya1\\global.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Global.xaml",
+              "DocumentMoniker": "D:\\table_table_table\\studies\\KRE\\4 \u043A\u0443\u0440\u0441\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u044F\\kursovaya\\Kursovaya1\\Kursovaya1\\Global.xaml",
+              "RelativeDocumentMoniker": "Kursovaya1\\Global.xaml",
+              "ToolTip": "D:\\table_table_table\\studies\\KRE\\4 \u043A\u0443\u0440\u0441\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u044F\\kursovaya\\Kursovaya1\\Kursovaya1\\Global.xaml",
+              "RelativeToolTip": "Kursovaya1\\Global.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-11-18T22:54:00.083Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Global.xaml.cs",
+              "DocumentMoniker": "D:\\table_table_table\\studies\\KRE\\4 \u043A\u0443\u0440\u0441\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u044F\\kursovaya\\Kursovaya1\\Kursovaya1\\Global.xaml.cs",
+              "RelativeDocumentMoniker": "Kursovaya1\\Global.xaml.cs",
+              "ToolTip": "D:\\table_table_table\\studies\\KRE\\4 \u043A\u0443\u0440\u0441\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u044F\\kursovaya\\Kursovaya1\\Kursovaya1\\Global.xaml.cs",
+              "RelativeToolTip": "Kursovaya1\\Global.xaml.cs",
+              "ViewState": "AQIAAGoAAAAAAAAAAAAswG8AAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-19T01:41:19.626Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AddEditWindow.xaml",
+              "DocumentMoniker": "D:\\table_table_table\\studies\\KRE\\4 \u043A\u0443\u0440\u0441\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u044F\\kursovaya\\Kursovaya1\\Kursovaya1\\AddEditWindow.xaml",
+              "RelativeDocumentMoniker": "Kursovaya1\\AddEditWindow.xaml",
+              "ToolTip": "D:\\table_table_table\\studies\\KRE\\4 \u043A\u0443\u0440\u0441\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u044F\\kursovaya\\Kursovaya1\\Kursovaya1\\AddEditWindow.xaml",
+              "RelativeToolTip": "Kursovaya1\\AddEditWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-11-23T16:44:31.759Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "D:\\table_table_table\\studies\\KRE\\4 \u043A\u0443\u0440\u0441\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u044F\\kursovaya\\Kursovaya1\\Kursovaya1\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "Kursovaya1\\MainWindow.xaml",
+              "ToolTip": "D:\\table_table_table\\studies\\KRE\\4 \u043A\u0443\u0440\u0441\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u044F\\kursovaya\\Kursovaya1\\Kursovaya1\\MainWindow.xaml",
+              "RelativeToolTip": "Kursovaya1\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-11-23T16:40:42.035Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RefreshWindow.xaml",
+              "DocumentMoniker": "D:\\table_table_table\\studies\\KRE\\4 \u043A\u0443\u0440\u0441\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u044F\\kursovaya\\Kursovaya1\\Kursovaya1\\RefreshWindow.xaml",
+              "RelativeDocumentMoniker": "Kursovaya1\\RefreshWindow.xaml",
+              "ToolTip": "D:\\table_table_table\\studies\\KRE\\4 \u043A\u0443\u0440\u0441\\\u041A\u0443\u0440\u0441\u043E\u0432\u0430\u044F\\kursovaya\\Kursovaya1\\Kursovaya1\\RefreshWindow.xaml",
+              "RelativeToolTip": "Kursovaya1\\RefreshWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-11-21T08:09:12.306Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

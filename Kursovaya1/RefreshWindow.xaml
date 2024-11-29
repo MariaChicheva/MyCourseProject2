@@ -1,0 +1,39 @@
+﻿<Window x:Class="Kursovaya1.RefreshWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kursovaya1"
+        mc:Ignorable="d"
+        Title="RefreshWindow" Height="450" Width="800">
+    <Grid>
+
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,1" EndPoint="2,1">
+                <GradientStop Color="#232323" Offset="0.0" />
+                <GradientStop Color="#354f2f" Offset="0.5" />
+                <GradientStop Color="#232323" Offset="1.0" />
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <StackPanel Margin="10">
+            <TextBlock Text="Клиент:" Foreground="#bbccb7" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <ComboBox x:Name="ClientComboBox" DisplayMemberPath="ClientName"/>
+            <TextBlock Text="Ювелир:" Foreground="#bbccb7" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <ComboBox x:Name="JewelerComboBox" DisplayMemberPath="JewelerName"/>
+
+            <TextBlock Text="Заказанное урашение:" Foreground="#bbccb7" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <ComboBox x:Name="ItemsComboBox" DisplayMemberPath="ItemName"/>
+
+            <TextBlock Text="Размер украшения:" Foreground="#bbccb7" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBox x:Name="SizeTextBox"/>
+
+            <TextBlock Text="Материал:" Foreground="#bbccb7" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <ComboBox x:Name="MaterialComboBox" DisplayMemberPath="MaterialName"/>
+
+            <TextBlock Text="Статус:" Foreground="#bbccb7" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <ComboBox x:Name="StatusComboBox" DisplayMemberPath="StatusName"/>
+            <Button Content="Обновить" x:Name="UpdateButton" Click="UpdateButton_Click" Margin="0,20,0,0" Foreground="#bbccb7" Background="#52714b" BorderBrush="#587c50" FontWeight="Bold"/>
+        </StackPanel>
+    </Grid>
+</Window>

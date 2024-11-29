@@ -1,0 +1,548 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище DBKursovayaModel" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="AccountID" />
+          </Key>
+          <Property Name="AccountID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login_" Type="nvarchar" MaxLength="45" />
+          <Property Name="Password_" Type="nvarchar" MaxLength="100" />
+          <Property Name="RoleID" Type="int" />
+        </EntityType>
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="ClientID" />
+          </Key>
+          <Property Name="ClientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientName" Type="varchar" MaxLength="255" />
+          <Property Name="ClientPhone" Type="varchar" MaxLength="11" />
+          <Property Name="ClientAdress" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="ItemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemName" Type="varchar" MaxLength="255" />
+          <Property Name="ItemWeight" Type="int" />
+          <Property Name="ItemSize" Type="int" />
+          <Property Name="ItemType" Type="int" />
+          <Property Name="ItemMaterial" Type="int" />
+        </EntityType>
+        <EntityType Name="Jeweler">
+          <Key>
+            <PropertyRef Name="JewelerID" />
+          </Key>
+          <Property Name="JewelerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JewelerName" Type="varchar" MaxLength="255" />
+          <Property Name="JewelerPhone" Type="varchar" MaxLength="11" />
+          <Property Name="ItemID" Type="int" />
+        </EntityType>
+        <EntityType Name="Material">
+          <Key>
+            <PropertyRef Name="MaterialID" />
+          </Key>
+          <Property Name="MaterialID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaterialName" Type="nvarchar" MaxLength="45" />
+          <Property Name="PrisePerGramm" Type="int" />
+        </EntityType>
+        <EntityType Name="Order_">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderNumber" Type="int" />
+          <Property Name="DateAndTime_" Type="date" />
+          <Property Name="ClientID" Type="int" />
+          <Property Name="JewelerID" Type="int" />
+          <Property Name="Item" Type="varchar" MaxLength="225" />
+          <Property Name="StatusID" Type="int" />
+        </EntityType>
+        <EntityType Name="Role_">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameRole" Type="nvarchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusName" Type="nvarchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="Types_">
+          <Key>
+            <PropertyRef Name="TypeID" />
+          </Key>
+          <Property Name="TypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeName" Type="nvarchar" MaxLength="45" />
+        </EntityType>
+        <Association Name="FK__Account__RoleID__4BAC3F29">
+          <End Role="Role_" Type="Self.Role_" Multiplicity="0..1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role_">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Item__ItemMateri__571DF1D5">
+          <End Role="Material" Type="Self.Material" Multiplicity="0..1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material">
+              <PropertyRef Name="MaterialID" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="ItemMaterial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Item__ItemType__5629CD9C">
+          <End Role="Types_" Type="Self.Types_" Multiplicity="0..1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Types_">
+              <PropertyRef Name="TypeID" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="ItemType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Jeweler__ItemID__59FA5E80">
+          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+          <End Role="Jeweler" Type="Self.Jeweler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="ItemID" />
+            </Principal>
+            <Dependent Role="Jeweler">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order___ClientID__5CD6CB2B">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="0..1" />
+          <End Role="Order_" Type="Self.Order_" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="Order_">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order___JewelerI__5DCAEF64">
+          <End Role="Jeweler" Type="Self.Jeweler" Multiplicity="0..1" />
+          <End Role="Order_" Type="Self.Order_" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Jeweler">
+              <PropertyRef Name="JewelerID" />
+            </Principal>
+            <Dependent Role="Order_">
+              <PropertyRef Name="JewelerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order___StatusID__5EBF139D">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="Order_" Type="Self.Order_" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="Order_">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище DBKursovayaModelContainer">
+          <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Jeweler" EntityType="Self.Jeweler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Material" EntityType="Self.Material" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order_" EntityType="Self.Order_" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role_" EntityType="Self.Role_" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Types_" EntityType="Self.Types_" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Account__RoleID__4BAC3F29" Association="Self.FK__Account__RoleID__4BAC3F29">
+            <End Role="Role_" EntitySet="Role_" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Item__ItemMateri__571DF1D5" Association="Self.FK__Item__ItemMateri__571DF1D5">
+            <End Role="Material" EntitySet="Material" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Item__ItemType__5629CD9C" Association="Self.FK__Item__ItemType__5629CD9C">
+            <End Role="Types_" EntitySet="Types_" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Jeweler__ItemID__59FA5E80" Association="Self.FK__Jeweler__ItemID__59FA5E80">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="Jeweler" EntitySet="Jeweler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order___ClientID__5CD6CB2B" Association="Self.FK__Order___ClientID__5CD6CB2B">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Order_" EntitySet="Order_" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order___JewelerI__5DCAEF64" Association="Self.FK__Order___JewelerI__5DCAEF64">
+            <End Role="Jeweler" EntitySet="Jeweler" />
+            <End Role="Order_" EntitySet="Order_" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order___StatusID__5EBF139D" Association="Self.FK__Order___StatusID__5EBF139D">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Order_" EntitySet="Order_" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBKursovayaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="AccountID" />
+          </Key>
+          <Property Name="AccountID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login_" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="Password_" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RoleID" Type="Int32" />
+          <NavigationProperty Name="Role_" Relationship="Self.FK__Account__RoleID__4BAC3F29" FromRole="Account" ToRole="Role_" />
+        </EntityType>
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="ClientID" />
+          </Key>
+          <Property Name="ClientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ClientPhone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="ClientAdress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Order_" Relationship="Self.FK__Order___ClientID__5CD6CB2B" FromRole="Clients" ToRole="Order_" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="ItemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ItemWeight" Type="Int32" />
+          <Property Name="ItemSize" Type="Int32" />
+          <Property Name="ItemType" Type="Int32" />
+          <Property Name="ItemMaterial" Type="Int32" />
+          <NavigationProperty Name="Material" Relationship="Self.FK__Item__ItemMateri__571DF1D5" FromRole="Item" ToRole="Material" />
+          <NavigationProperty Name="Types_" Relationship="Self.FK__Item__ItemType__5629CD9C" FromRole="Item" ToRole="Types_" />
+          <NavigationProperty Name="Jeweler" Relationship="Self.FK__Jeweler__ItemID__59FA5E80" FromRole="Item" ToRole="Jeweler" />
+        </EntityType>
+        <EntityType Name="Jeweler">
+          <Key>
+            <PropertyRef Name="JewelerID" />
+          </Key>
+          <Property Name="JewelerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JewelerName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="JewelerPhone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="ItemID" Type="Int32" />
+          <NavigationProperty Name="Item" Relationship="Self.FK__Jeweler__ItemID__59FA5E80" FromRole="Jeweler" ToRole="Item" />
+          <NavigationProperty Name="Order_" Relationship="Self.FK__Order___JewelerI__5DCAEF64" FromRole="Jeweler" ToRole="Order_" />
+        </EntityType>
+        <EntityType Name="Material">
+          <Key>
+            <PropertyRef Name="MaterialID" />
+          </Key>
+          <Property Name="MaterialID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaterialName" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="PrisePerGramm" Type="Int32" />
+          <NavigationProperty Name="Item" Relationship="Self.FK__Item__ItemMateri__571DF1D5" FromRole="Material" ToRole="Item" />
+        </EntityType>
+        <EntityType Name="Order_">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderNumber" Type="Int32" />
+          <Property Name="DateAndTime_" Type="DateTime" Precision="0" />
+          <Property Name="ClientID" Type="Int32" />
+          <Property Name="JewelerID" Type="Int32" />
+          <Property Name="Item" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+          <Property Name="StatusID" Type="Int32" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK__Order___ClientID__5CD6CB2B" FromRole="Order_" ToRole="Clients" />
+          <NavigationProperty Name="Jeweler" Relationship="Self.FK__Order___JewelerI__5DCAEF64" FromRole="Order_" ToRole="Jeweler" />
+          <NavigationProperty Name="Status" Relationship="Self.FK__Order___StatusID__5EBF139D" FromRole="Order_" ToRole="Status" />
+        </EntityType>
+        <EntityType Name="Role_">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameRole" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__Account__RoleID__4BAC3F29" FromRole="Role_" ToRole="Account" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusName" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Order_" Relationship="Self.FK__Order___StatusID__5EBF139D" FromRole="Status" ToRole="Order_" />
+        </EntityType>
+        <EntityType Name="Types_">
+          <Key>
+            <PropertyRef Name="TypeID" />
+          </Key>
+          <Property Name="TypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Item" Relationship="Self.FK__Item__ItemType__5629CD9C" FromRole="Types_" ToRole="Item" />
+        </EntityType>
+        <Association Name="FK__Account__RoleID__4BAC3F29">
+          <End Role="Role_" Type="Self.Role_" Multiplicity="0..1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role_">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order___ClientID__5CD6CB2B">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="0..1" />
+          <End Role="Order_" Type="Self.Order_" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="ClientID" />
+            </Principal>
+            <Dependent Role="Order_">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Item__ItemMateri__571DF1D5">
+          <End Role="Material" Type="Self.Material" Multiplicity="0..1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material">
+              <PropertyRef Name="MaterialID" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="ItemMaterial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Item__ItemType__5629CD9C">
+          <End Role="Types_" Type="Self.Types_" Multiplicity="0..1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Types_">
+              <PropertyRef Name="TypeID" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="ItemType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Jeweler__ItemID__59FA5E80">
+          <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+          <End Role="Jeweler" Type="Self.Jeweler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="ItemID" />
+            </Principal>
+            <Dependent Role="Jeweler">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order___JewelerI__5DCAEF64">
+          <End Role="Jeweler" Type="Self.Jeweler" Multiplicity="0..1" />
+          <End Role="Order_" Type="Self.Order_" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Jeweler">
+              <PropertyRef Name="JewelerID" />
+            </Principal>
+            <Dependent Role="Order_">
+              <PropertyRef Name="JewelerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order___StatusID__5EBF139D">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="Order_" Type="Self.Order_" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="Order_">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBKursovayaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Account" EntityType="Self.Account" />
+          <EntitySet Name="Clients" EntityType="Self.Clients" />
+          <EntitySet Name="Item" EntityType="Self.Item" />
+          <EntitySet Name="Jeweler" EntityType="Self.Jeweler" />
+          <EntitySet Name="Material" EntityType="Self.Material" />
+          <EntitySet Name="Order_" EntityType="Self.Order_" />
+          <EntitySet Name="Role_" EntityType="Self.Role_" />
+          <EntitySet Name="Status" EntityType="Self.Status" />
+          <EntitySet Name="Types_" EntityType="Self.Types_" />
+          <AssociationSet Name="FK__Account__RoleID__4BAC3F29" Association="Self.FK__Account__RoleID__4BAC3F29">
+            <End Role="Role_" EntitySet="Role_" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order___ClientID__5CD6CB2B" Association="Self.FK__Order___ClientID__5CD6CB2B">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Order_" EntitySet="Order_" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Item__ItemMateri__571DF1D5" Association="Self.FK__Item__ItemMateri__571DF1D5">
+            <End Role="Material" EntitySet="Material" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Item__ItemType__5629CD9C" Association="Self.FK__Item__ItemType__5629CD9C">
+            <End Role="Types_" EntitySet="Types_" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Jeweler__ItemID__59FA5E80" Association="Self.FK__Jeweler__ItemID__59FA5E80">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="Jeweler" EntitySet="Jeweler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order___JewelerI__5DCAEF64" Association="Self.FK__Order___JewelerI__5DCAEF64">
+            <End Role="Jeweler" EntitySet="Jeweler" />
+            <End Role="Order_" EntitySet="Order_" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order___StatusID__5EBF139D" Association="Self.FK__Order___StatusID__5EBF139D">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Order_" EntitySet="Order_" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище DBKursovayaModelContainer" CdmEntityContainer="DBKursovayaEntities">
+          <EntitySetMapping Name="Account">
+            <EntityTypeMapping TypeName="DBKursovayaModel.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="Login_" ColumnName="Login_" />
+                <ScalarProperty Name="Password_" ColumnName="Password_" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="DBKursovayaModel.Clients">
+              <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="ClientPhone" ColumnName="ClientPhone" />
+                <ScalarProperty Name="ClientAdress" ColumnName="ClientAdress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Item">
+            <EntityTypeMapping TypeName="DBKursovayaModel.Item">
+              <MappingFragment StoreEntitySet="Item">
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="ItemWeight" ColumnName="ItemWeight" />
+                <ScalarProperty Name="ItemSize" ColumnName="ItemSize" />
+                <ScalarProperty Name="ItemType" ColumnName="ItemType" />
+                <ScalarProperty Name="ItemMaterial" ColumnName="ItemMaterial" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Jeweler">
+            <EntityTypeMapping TypeName="DBKursovayaModel.Jeweler">
+              <MappingFragment StoreEntitySet="Jeweler">
+                <ScalarProperty Name="JewelerID" ColumnName="JewelerID" />
+                <ScalarProperty Name="JewelerName" ColumnName="JewelerName" />
+                <ScalarProperty Name="JewelerPhone" ColumnName="JewelerPhone" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Material">
+            <EntityTypeMapping TypeName="DBKursovayaModel.Material">
+              <MappingFragment StoreEntitySet="Material">
+                <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
+                <ScalarProperty Name="MaterialName" ColumnName="MaterialName" />
+                <ScalarProperty Name="PrisePerGramm" ColumnName="PrisePerGramm" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order_">
+            <EntityTypeMapping TypeName="DBKursovayaModel.Order_">
+              <MappingFragment StoreEntitySet="Order_">
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="DateAndTime_" ColumnName="DateAndTime_" />
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="JewelerID" ColumnName="JewelerID" />
+                <ScalarProperty Name="Item" ColumnName="Item" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role_">
+            <EntityTypeMapping TypeName="DBKursovayaModel.Role_">
+              <MappingFragment StoreEntitySet="Role_">
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="NameRole" ColumnName="NameRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="DBKursovayaModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Types_">
+            <EntityTypeMapping TypeName="DBKursovayaModel.Types_">
+              <MappingFragment StoreEntitySet="Types_">
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
